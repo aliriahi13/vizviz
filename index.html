@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<header>
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>first try</title>
+
+        <script
+        src="https://telegram.org/js/telegram-web-app.js">
+        </script>
+
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+        </script>
+
+        <style>
+            body {
+                background-image: url('https://imgtr.ee/images/2024/07/13/d27baecd668d3d1a58c411296af11023.jpeg');
+                background-repeat: no-repeat;
+                background-color: var(--tg-theme-bg-color);
+                color: var(--tg-theme-text-color);
+            }
+        </style>
+    </head>
+</header>
+<main>
+    <h1 style="color: aqua;">
+        خوش اومدی گل من
+    </h1>
+    <h2 style="color: cadetblue;">
+        آزمایشی
+    </h2>
+    <body>
+        <p id="firstname"> سلام به شما</p>
+        <button onclick="sendData()">کلیک</button>
+        <button id="closeApp" onclick="closeApp()">برنامه رو ببند</button>
+
+        <script>
+            const tg = window.Telegram.WebApp;
+            console.log(tg.initDataUnsafe)
+            function sendData() {
+                $.ajax({
+                    url: '/process',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({'value':tg.initData}),
+                });
+            };
+            function closeApp() {
+                tg.close()
+            }
+        </script>
+    </body>
+</main>
+<footer>
+
+</footer>
+</html>
